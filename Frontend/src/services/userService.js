@@ -29,74 +29,54 @@ const initializeData = async () => {
 };
 
 export const getUsers = async () => {
-  try {
-    const data = await initializeData();
-    return data.users;
-  } catch (error) {
-    throw new Error(error.message || 'Failed to fetch users');
-  }
+  const data = await initializeData();
+  return data.users;
 };
 
 export const getUser = async (id) => {
-  try {
-    const data = await initializeData();
-    const user = data.users.find(u => u.id === parseInt(id));
-    if (!user) throw new Error('User not found');
-    return user;
-  } catch (error) {
-    throw new Error(error.message || 'Failed to fetch user');
-  }
+  const data = await initializeData();
+  const user = data.users.find(u => u.id === parseInt(id));
+  if (!user) throw new Error('User not found');
+  return user;
 };
 
 export const createUser = async (userData) => {
-  try {
-    const data = await initializeData();
-    const newUser = {
-      ...userData,
-      id: data.nextId,
-      username: userData.name.toLowerCase().replace(/\s+/g, '')
-    };
-    
-    data.users.push(newUser);
-    data.nextId += 1;
-    saveToStorage(data);
-    
-    return newUser;
-  } catch (error) {
-    throw new Error(error.message || 'Failed to create user');
-  }
+  const data = await initializeData();
+  const newUser = {
+    ...userData,
+    id: data.nextId,
+    username: userData.name.toLowerCase().replace(/\s+/g, '')
+  };
+  
+  data.users.push(newUser);
+  data.nextId += 1;
+  saveToStorage(data);
+  
+  return newUser;
 };
 
 export const updateUser = async (id, userData) => {
-  try {
-    const data = await initializeData();
-    const userIndex = data.users.findIndex(u => u.id === parseInt(id));
-    
-    if (userIndex === -1) throw new Error('User not found');
-    
-    data.users[userIndex] = { ...data.users[userIndex], ...userData };
-    saveToStorage(data);
-    
-    return data.users[userIndex];
-  } catch (error) {
-    throw new Error(error.message || 'Failed to update user');
-  }
+  const data = await initializeData();
+  const userIndex = data.users.findIndex(u => u.id === parseInt(id));
+  
+  if (userIndex === -1) throw new Error('User not found');
+  
+  data.users[userIndex] = { ...data.users[userIndex], ...userData };
+  saveToStorage(data);
+  
+  return data.users[userIndex];
 };
 
 export const deleteUser = async (id) => {
-  try {
-    const data = await initializeData();
-    const userIndex = data.users.findIndex(u => u.id === parseInt(id));
-    
-    if (userIndex === -1) throw new Error('User not found');
-    
-    data.users.splice(userIndex, 1);
-    saveToStorage(data);
-    
-    return true;
-  } catch (error) {
-    throw new Error(error.message || 'Failed to delete user');
-  }
+  const data = await initializeData();
+  const userIndex = data.users.findIndex(u => u.id === parseInt(id));
+  
+  if (userIndex === -1) throw new Error('User not found');
+  
+  data.users.splice(userIndex, 1);
+  saveToStorage(data);
+  
+  return true;
 };
 
 // Clear all local data (for testing)

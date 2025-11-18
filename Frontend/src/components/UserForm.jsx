@@ -32,9 +32,7 @@ const UserForm = ({ user, onSubmit, onCancel, isEditing = false }) => {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="card overflow-hidden">
-        {/* Form Header */}
         <div className="relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 p-8 text-white overflow-hidden">
-          {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full -translate-y-20 translate-x-20"></div>
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-white rounded-full translate-y-16 -translate-x-16"></div>
@@ -53,7 +51,6 @@ const UserForm = ({ user, onSubmit, onCancel, isEditing = false }) => {
           </div>
         </div>
         
-        {/* Form Body */}
         <div className="p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
