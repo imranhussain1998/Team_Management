@@ -56,7 +56,7 @@ const Navigation = () => {
           
           <div className="flex items-center space-x-4">
             <div className="hidden sm:flex items-center space-x-2 text-xs text-muted">
-              <div className="status-dot bg-emerald-500"></div>
+              <div className="w-2 h-2 rounded-full animate-pulse bg-emerald-500"></div>
               <span>All systems operational</span>
             </div>
             <ThemeToggle />
